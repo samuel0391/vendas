@@ -1,0 +1,331 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #020802;
+    color: white;
+    font-family: Arial, sans-serif;
+
+    /* LINHAS VERDES NO FUNDO */
+    background-image:
+        linear-gradient(rgba(57,255,20,0.09) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(57,255,20,0.09) 1px, transparent 1px);
+
+    background-size: 45px 45px;
+    position: relative;
+}
+
+/* BRILHO NO FUNDO */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background: radial-gradient(
+        circle at center,
+        rgba(57,255,20,0.08),
+        transparent 70%
+    );
+    z-index: -1;
+}
+
+/* CABEÇALHO */
+header {
+    min-height: 90px;
+    padding: 20px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(57,255,20,0.5);
+    background: rgba(2,8,2,0.85);
+}
+
+header h1 {
+    font-size: 30px;
+}
+
+span {
+    color: #39ff14;
+}
+
+nav {
+    display: flex;
+    gap: 30px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #39ff14;
+}
+
+/* INÍCIO - SEM RETÂNGULO VERDE */
+.inicio {
+    text-align: center;
+    padding: 85px 20px 75px;
+
+    background: transparent !important;
+
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+/* LUZ VERDE DISCRETA */
+.inicio::before {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: #39ff14;
+    filter: blur(150px);
+    opacity: 0.12;
+    border-radius: 50%;
+    top: -100px;
+    left: 10%;
+    z-index: -1;
+    animation: luz 7s ease-in-out infinite alternate;
+}
+
+.inicio::after {
+    content: "";
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    background: #00ff88;
+    filter: blur(130px);
+    opacity: 0.10;
+    border-radius: 50%;
+    bottom: -100px;
+    right: 10%;
+    z-index: -1;
+    animation: luz 6s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes luz {
+    from {
+        transform: translate(0, 0);
+    }
+    to {
+        transform: translate(80px, 35px);
+    }
+}
+
+.inicio h2 {
+    font-size: 75px;
+    margin-bottom: 20px;
+    text-shadow: 0 0 25px rgba(57,255,20,0.45);
+    animation: aparecer 1s ease;
+}
+
+.inicio h3 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    animation: aparecer 1.2s ease;
+}
+
+.destaque-amarelo {
+    color: #ffd700;
+}
+
+.destaque-verde {
+    color: #39ff14;
+}
+
+.inicio p {
+    color: #ddd;
+    font-size: 18px;
+    line-height: 1.7;
+    max-width: 700px;
+    margin: 0 auto 35px;
+    animation: aparecer 1.4s ease;
+}
+
+/* ANIMAÇÃO DE ENTRADA */
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* BOTÕES */
+.botao {
+    display: inline-block;
+    background: #39ff14;
+    color: #020802;
+    padding: 15px 30px;
+    border-radius: 40px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: 0 0 18px rgba(57,255,20,0.25);
+    transition: 0.3s;
+}
+
+.botao:hover {
+    background: white;
+    box-shadow: 0 0 30px #39ff14;
+    transform: scale(1.05);
+}
+
+/* CARTÕES DAS AULAS */
+.aulas {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 30px;
+    padding: 35px 5% 70px;
+    max-width: 1150px;
+    margin: auto;
+    transform: translateY(-85px);
+}
+
+.card {
+    background: linear-gradient(145deg, #0b1d0e, #030803);
+    border: 1px solid rgba(57,255,20,0.4);
+    border-radius: 22px;
+    padding: 35px 25px;
+    text-align: center;
+    box-shadow: 0 10px 35px rgba(0,0,0,0.4);
+    transition: 0.4s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    border-color: #39ff14;
+    box-shadow: 0 0 30px rgba(57,255,20,0.25);
+}
+
+.icone {
+    color: #39ff14;
+    font-size: 55px;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 0 10px #39ff14);
+}
+
+.numero {
+    display: inline-block;
+    background: #39ff14;
+    color: #020802;
+    padding: 8px 25px;
+    border-radius: 30px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.card h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.card p {
+    color: #ddd;
+    font-size: 17px;
+    line-height: 1.5;
+    min-height: 55px;
+    margin-bottom: 25px;
+}
+
+/* RODAPÉ */
+footer {
+    text-align: center;
+    padding: 30px 15px;
+    border-top: 1px solid rgba(57,255,20,0.5);
+    background: rgba(2,8,2,0.85);
+    color: #39ff14;
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+
+/* PÁGINAS DAS AULAS */
+.pagina-aula {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 30px 20px;
+    text-align: center;
+}
+
+.pagina-aula h2 {
+    font-size: 42px;
+    margin: 20px 0;
+}
+
+.pagina-aula > p {
+    color: #ccc;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.video-aula {
+    background: #071b0b;
+    border: 1px solid #39ff14;
+    border-radius: 20px;
+    min-height: 350px;
+    margin: 35px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.video-aula .icone {
+    font-size: 65px;
+}
+
+.video-aula p {
+    color: #ccc;
+}
+
+/* CELULAR */
+@media (max-width: 800px) {
+    header {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    nav {
+        gap: 18px;
+    }
+
+    .inicio h2 {
+        font-size: 48px;
+    }
+
+    .inicio h3 {
+        font-size: 24px;
+    }
+
+    .aulas {
+        grid-template-columns: 1fr;
+    }
+
+    .pagina-aula h2 {
+        font-size: 32px;
+    }
+}
+
+/* ACESSIBILIDADE */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
